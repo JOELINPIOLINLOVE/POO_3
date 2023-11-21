@@ -1,5 +1,5 @@
 class Cuenta:
-    def _init_(self, numero, titular, saldo, limite):
+    def __init__(self, numero, titular, saldo, limite):
         print('Construyendo el Objeto...{}'.format(self))
         self.__numero = numero
         self.__titular = titular
@@ -12,7 +12,8 @@ class Cuenta:
         self.__saldo += valor
         
     def retirar (self,valor):
-        if(valor<= self.saldo):
-            self.__saldo -= valor
-        else:
-            print("No tiene suficiente saldo")
+        self.__saldo -= valor
+            
+    def transferir(self, valor, origen, destino):
+        origen.retirar(valor)
+        destino.depositar(valor)
